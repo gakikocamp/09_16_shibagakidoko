@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="user_select.php">管理画面</a>
+                        <a class="nav-link" href="login.php">ログイン</a>
                     </li>
                 </ul>
             </div>

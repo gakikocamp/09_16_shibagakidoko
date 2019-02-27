@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>キャンプ場登録</title>
+    <title>ログイン</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         div{
@@ -19,40 +19,33 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">キャンプ場登録</a>
+            <a class="navbar-brand" href="#">LogIn</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="select.php">データ一覧</a>
+                        <a class="nav-link" href="nologin_user_index.php">ユーザー登録</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="select_nologin.php">一覧ページ</a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
     </header>
 
-    <form action="insert.php" method="post">
+    <form method="post" action="login_act.php">
+       <!-- ログイン情報をloginact.phpに送信 -->
         <div class="form-group">
-            <label for="name">名前</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <label for="lid">LoginID</label>
+            <input type="text" class="form-control" id="lid" name="lid">
         </div>
-            <div class="form-group">
-            <label for="zip">郵便番号</label>
-            <input type="text" class="form-control" id="zip" name="zip">
-        </div>
-        <div class="form-group">
-            <label for="address">住所</label>
-            <input type="text" class="form-control" id="address" name="address">
-        </div>
-        <div class="form-group">
-            <label for="tel">電話番号</label>
-            <input type="text" class="form-control" id="tel" name="tel">
-        </div>
-        <div class="form-group">
-            <label for="comment">キャンプ場案内文</label>
-            <textarea class="form-control" id="comment" rows="10" name="comment"></textarea>
+        <div class=" form-group">
+            <label for="lpw">Pass</label>
+            <input type="password" class="form-control" id="lpw" name="lpw">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>

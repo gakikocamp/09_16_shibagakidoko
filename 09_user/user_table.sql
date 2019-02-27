@@ -43,8 +43,7 @@ CREATE TABLE `gs_bm_table` (
 --
 
 INSERT INTO `gs_bm_table` (`id`, `name`, `zip`, `address`, `tel`, `comment`, `indate`) VALUES
-(1, 'ボイボイキャンプ場', '8780201', '大分県竹田市久住町大字久住4050-11', '09079272570', '何も遮るものがない、大分・くじゅう高原約１万坪もの広大な草原が広がる解放感抜群のキャンプ場！', '2019-02-02 18:15:43'),
-(2, 'ボイボイキャンプ場', '8780201', '大分県竹田市久住町大字久住4050-11', '09079272570', '何も遮るものがない、大分・くじゅう高原約１万坪もの広大な草原が広がる解放感抜群のキャンプ場！', '2019-02-02 18:15:57');
+(1, 'ボイボイキャンプ場', '8780201', '大分県竹田市久住町大字久住4050-11', '09079272570', '何も遮るものがない、大分・くじゅう高原約１万坪もの広大な草原が広がる解放感抜群のキャンプ場！', '2019-02-02 18:15:43');
 
 -- --------------------------------------------------------
 
@@ -65,14 +64,32 @@ CREATE TABLE `php02_table` (
 --
 
 INSERT INTO `php02_table` (`id`, `task`, `deadline`, `comment`, `indate`) VALUES
-(2, 'js', '2019-02-03', '大変', '2019-02-02 15:27:56'),
-(3, 'jQuery', '2019-02-04', '便利', '2019-02-02 15:29:16'),
-(4, 'js', '2019-02-03', '大変', '2019-02-02 15:31:13'),
-(5, 'js', '2019-02-03', '大変', '2019-02-02 15:32:16'),
-(6, 'js', '2019-02-03', '大変', '2019-02-02 15:32:48'),
-(7, 'js', '2019-02-03', '大変', '2019-02-02 15:33:00'),
-(8, 'js', '2019-02-13', '大変', '2019-02-02 15:33:31'),
-(9, 'あああ', '2019-02-12', 'ああああ', '2019-02-02 16:44:52');
+(12, 'はやくねる', '2019-02-14', '今日は誕生日', '2019-02-09 16:08:19'),
+(13, 'やること', '2019-02-28', 'いろいろやりたいよ', '2019-02-16 17:05:08');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `user_table`
+--
+
+CREATE TABLE `user_table` (
+  `id` int(12) NOT NULL,
+  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `lid` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `lpw` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `kanri_flg` int(1) DEFAULT '0',
+  `life_flg` int(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- テーブルのデータのダンプ `user_table`
+--
+
+INSERT INTO `user_table` (`id`, `name`, `lid`, `lpw`, `kanri_flg`, `life_flg`) VALUES
+(2, '柴垣がきこ', 'gakigaki', 'gakkk', 0, 0),
+(3, '橋本きのこ', 'kinokonoko', 'kinoko', 0, 0),
+(4, '堀之内かに', 'kanikani', 'kanikani', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -91,6 +108,12 @@ ALTER TABLE `php02_table`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_table`
+--
+ALTER TABLE `user_table`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -98,13 +121,19 @@ ALTER TABLE `php02_table`
 -- AUTO_INCREMENT for table `gs_bm_table`
 --
 ALTER TABLE `gs_bm_table`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `php02_table`
 --
 ALTER TABLE `php02_table`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `user_table`
+--
+ALTER TABLE `user_table`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,10 @@
 <?php
+// var_dump($_POST);
+// var_dump($_GET);
+
+
 // 関数ファイルの読み込み
-include('functions.php');
+include('user_functions.php');
 
 // getで送信されたidを取得
 $id=$_GET['id'];
@@ -9,7 +13,7 @@ $id=$_GET['id'];
 $pdo=db_conn();
 
 //データ登録SQL作成，指定したidのみ表示する
-$sql = 'SELECT * FROM gs_bm_table WHERE id=:id';//sql文   資料は省略表示している
+$sql = 'SELECT * FROM user_table WHERE id=:id';//sql文   資料は省略表示している
 $stmt = $pdo->prepare($sql); //実行準備させる
 $stmt->bindValue(':id', $id, PDO::PARAM_INT);//バインド変数 idから引っ張る
 $status = $stmt->execute();//実行している
@@ -37,7 +41,7 @@ if ($status==false) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>キャンプ場登録</title>
+    <title>ユーザー登録ページ</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         div{
@@ -51,40 +55,41 @@ if ($status==false) {
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">キャンプ場登録</a>
+            <a class="navbar-brand" href="#">管理人修正画面</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="select.php">データ一覧</a>
+                        <a class="nav-link" href="user_select.php">データ一覧</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <form action="update.php" method="post">
+    <form action="user_update.php" method="post">
         <div class="form-group">
             <label for="name">名前</label>
             <input type="text" class="form-control" id="name" name="name" value="<?=$rs['name']?>">
         </div>
             <div class="form-group">
-            <label for="zip">郵便番号</label>
-            <input type="text" class="form-control" id="zip" name="zip" value="<?=$rs['zip']?>">
+            <label for="lid">ログインID</label>
+            <input type="text" class="form-control" id="lid" name="lid" value="<?=$rs['lid']?>">
         </div>
         <div class="form-group">
-            <label for="address">住所</label>
-            <input type="text" class="form-control" id="address" name="address" value="<?=$rs['address']?>">
+            <label for="lpw">パスワード</label>
+            <input type="text" class="form-control" id="lpw" name="lpw" value="<?=$rs['lpw']?>">
         </div>
         <div class="form-group">
-            <label for="tel">電話番号</label>
-            <input type="text" class="form-control" id="tel" name="tel" value="<?=$rs['tel']?>">
+            <label for="kanri_flg">一般：０,管理者：１</label>
+            <input type="text" class="form-control" id="kanri_flg" name="kanri_flg" value="<?=$rs['kanri_flg']?>">
+       
         </div>
         <div class="form-group">
-            <label for="comment">キャンプ場案内文</label>
-            <textarea class="form-control" id="comment" rows="10" name="comment" ><?=$rs['comment']?></textarea>
+            <label for="life_flg">アクティブ：０,非アクティブ：１</label>
+            <textarea class="form-control" id="life_flg" rows="1" name="life_flg" ><?=$rs['life_flg']?></textarea>
         </div>
 
         <div class="form-group">
